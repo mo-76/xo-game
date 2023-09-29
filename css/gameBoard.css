@@ -1,0 +1,56 @@
+.game-board {
+  width: 300px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 1px;
+  position: relative;
+  text-align: center;
+  background-color: var(--main-color);
+  padding: 50px;
+  /* overflow: hidden; */
+  border: solid 1px black;
+  background-color: #6d7c89;
+}
+
+.game-board .box {
+  height: 100px;
+  transition: 0.3s;
+  background-color: green;
+  font-size: 50px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.game-board .box:hover {
+  background-color: var(--main-color);
+}
+
+.game-board .line {
+  position: absolute;
+  color: red;
+  width: 370px;
+  transform: translate(-50%, -50%);
+}
+
+.game-board div.h-line1 {
+  top: calc(50px + 102px);
+  left: calc(50px + 150px);
+}
+
+.game-board div.h-line2 {
+  top: calc(50px + 205px);
+  left: calc(50px + 150px);
+}
+
+.game-board div.v-line1 {
+  transform: translate(-50%, -50%) rotate(90deg);
+  top: calc(50px + 150px);
+  left: calc(50px + 97px);
+}
+
+.game-board div.v-line2 {
+  transform: translate(-50%, -50%) rotate(90deg);
+  top: calc(50px + 150px);
+  left: calc(50px + 197px);
+}

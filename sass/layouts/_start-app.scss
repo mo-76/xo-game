@@ -1,0 +1,130 @@
+.start-app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+
+  & .btn {
+    @include btn(60px, 10px, 25px, 900);
+    // font-size: 25px;
+    // font-weight: bold;
+  }
+}
+
+.start-app .bouncing-text {
+  position: relative;
+  display: flex;
+  gap: 20px;
+  font-size: 70px;
+  font-weight: 900;
+
+  & .letter-shadow {
+    position: relative;
+
+    & .letter {
+      position: relative;
+      color: cornsilk;
+      text-shadow: 0 3px #4361ee, 0 5px #4361ee, 0 7px #4361ee; /* dont't write the var color, because it change the var color, I don't like to change this color*/
+      animation: bounce 2s ease infinite;
+    }
+
+    &:nth-child(2) .letter {
+      animation-delay: 0.1s;
+    }
+
+    &:nth-child(3) .letter {
+      animation-delay: 0.3s;
+    }
+
+    &:nth-child(4) .letter {
+      animation-delay: 0.5s;
+    }
+
+    &:nth-child(5) .letter {
+      animation-delay: 0.7s;
+    }
+
+    &:nth-child(6) .letter {
+      animation-delay: 0.9s;
+    }
+
+    & .shadow {
+      display: inline-block;
+      width: 50px;
+      height: 5px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.4);
+      animation: scale 2s linear infinite;
+    }
+
+    &:first-child .shadow {
+      animation-delay: 0.2s;
+    }
+
+    &:nth-child(2) .shadow {
+      animation-delay: 0.4s;
+    }
+
+    &:nth-child(3) .shadow {
+      animation-delay: 0.6s;
+    }
+
+    &:nth-child(4) .shadow {
+      animation-delay: 0.8s;
+    }
+
+    &:nth-child(5) .shadow {
+      animation-delay: 1s;
+    }
+
+    &:nth-child(6) .shadow {
+      animation-delay: 1.2s;
+    }
+  }
+}
+
+@keyframes bounce {
+  0% {
+    transform: scale(1, 1) translateY(0);
+  }
+  10% {
+    transform: scale(1.1, 0.9) translateY(0);
+  }
+  30% {
+    transform: scale(0.9, 1.1) translateY(-55px);
+  }
+  50% {
+    transform: scale(1.05, 0.95) translateY(0);
+  }
+  58% {
+    transform: scale(1, 1) translateY(-7px);
+  }
+  65% {
+    transform: scale(1, 1) translateY(0);
+  }
+  100% {
+    transform: scale(1, 1) translateY(0);
+  }
+}
+
+@keyframes scale {
+  0% {
+    transform: scaleX(1);
+  }
+  25% {
+    transform: scaleX(0.4);
+  }
+  50% {
+    transform: scaleX(1);
+  }
+  75% {
+    transform: scaleX(0.9);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}

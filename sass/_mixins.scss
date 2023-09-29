@@ -1,0 +1,136 @@
+@mixin cross($width, $height, $bg) {
+  position: relative;
+
+  & span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: $width;
+    height: $height;
+    background: $bg;
+
+    &:first-child {
+      transform: rotate(45deg);
+    }
+
+    &:last-child {
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+@mixin cricle($width, $height) {
+  width: $width;
+  height: $height;
+  border-radius: 50%;
+}
+
+@mixin cricle-bg($width, $height, $bg) {
+  @include cricle($width, $height);
+  background: $bg;
+}
+
+@mixin circle-border($width, $height, $border) {
+  @include cricle($width, $height);
+  border: $border;
+}
+
+@mixin circle-effect($width, $height, $bg, $filter-val, $opacity) {
+  @include cricle-bg($width, $height, $bg);
+  position: absolute;
+  filter: blur($filter-val);
+  opacity: $opacity;
+}
+
+@mixin my-label {
+  width: 200px;
+  padding: 10px 20px;
+  // border-radius: 6px 6px;
+  font-size: 15px;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+  text-align: center;
+}
+
+@mixin drop-menu($bg, $color) {
+  position: relative;
+  // overflow: hidden;
+  background-color: #3498db;
+  @include my-label();
+
+  & .dropdown-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+    color: $color;
+    color: #eee;
+    cursor: pointer;
+    // background: $bg;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      45deg,
+      #00ccff,
+      rgb(255 255 255 / 0.1),
+      #00ccff
+    );
+    background: rgb(0 0 0 / 0.1);
+    // z-index: -1;
+    // border-radius: 6px;
+    // transition: ease-in-out 0.3s;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    // left: -50%;
+    width: 50%;
+    height: 100%;
+    top: 0;
+    background-color: rgba(255, 255, 255, 0.075);
+  }
+
+  & .dropdown-title .dropdown-title span {
+    display: inline-block;
+  }
+
+  & .dropdown-title img {
+    display: inline-block;
+    width: 15px;
+  }
+
+  & .menu {
+    position: absolute;
+    width: 100%;
+    transition: 0.3s;
+    left: 0;
+    top: 100%;
+    z-index: 1;
+  }
+
+  & .menu li {
+    padding: 10px 20px;
+    background-color: rgba(0, 110, 255, 0.4);
+    letter-spacing: 1.5px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: 0.5s;
+  }
+
+  & .menu li:hover {
+    opacity: 0.8;
+    color: var(--dark-color);
+  }
+
+  & .menu li:not(:last-child) {
+    border-bottom: solid 2px rgba(255, 255, 255, 0.5);
+  }
+
+  & .menu :last-child {
+    border-radius: 0 0 6px 6px;
+  }
+}

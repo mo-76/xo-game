@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link rel="stylesheet" href="css/general.css" />
+    <link rel="stylesheet" href="css/gameBoard.css" /> -->
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="app">
+      <!-- effect behind the background -->
+      <!-- <div class="background-animation">
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="ball"></div>
+        <div class="ball"></div>
+        <div class="ball"></div>
+        <div class="cross">
+          <span></span>
+          <span></span>
+        </div>
+        <div class="circle"></div>
+      </div> -->
+      <div class="background"></div>
+      <!-- start interface  -->
+      <div class="start-app" style="display: none">
+        <div class="bouncing-text">
+          <div class="letter-shadow">
+            <div class="letter">X</div>
+            <div class="shadow"></div>
+          </div>
+          <div class="letter-shadow">
+            <div class="letter">O</div>
+            <div class="shadow"></div>
+          </div>
+          <div class="letter-shadow">
+            <div class="letter">G</div>
+            <div class="shadow"></div>
+          </div>
+          <div class="letter-shadow">
+            <div class="letter">A</div>
+            <div class="shadow"></div>
+          </div>
+          <div class="letter-shadow">
+            <div class="letter">M</div>
+            <div class="shadow"></div>
+          </div>
+          <div class="letter-shadow">
+            <div class="letter">E</div>
+            <div class="shadow"></div>
+          </div>
+        </div>
+        <a class="play-btn gradient-btn"> <span>Play Now</span> </a>
+      </div>
+
+      <!-- setting interface -->
+      <div class="game-setup" style="display: none">
+        <header class="header">
+          <h2>Settings</h2>
+        </header>
+        <section class="body">
+          <div class="progress-steps">
+            <div class="progress-bar"></div>
+            <div class="step-circle active">1</div>
+            <div class="step-circle">2</div>
+            <div class="step-circle">3</div>
+          </div>
+
+          <!-- For selecting play mode: friend or computer -->
+          <!-- <div class="play-mode-option game-setup-option">
+            <div class="play-mode-config option-config">
+              <span class="option-label">Play with</span>
+              <div class="dropdown-menu">
+                <div class="dropdown-title">
+                  <span>mode options</span>
+                  <img src="images/arrow-down.svg" alt="arrow-down" />
+                </div>
+                <ul class="menu" style="display: no ne">
+                  <li>Friend</li>
+                  <li>Computer</li>
+                </ul>
+              </div>
+            </div>
+            <div class="error-message">
+              <span>Please select how you want to play</span>
+            </div>
+          </div> -->
+
+          <!-- For selecting the number of rounds -->
+          <!-- <div class="rounds-option game-setup-option">
+            <div class="rounds-config option-config">
+              <span class="option-label">Number of rounds</span>
+              <input type="text" />
+            </div>
+            <div class="error-message">
+              <span>Please select the number of rounds</span>
+            </div>
+          </div> -->
+
+          <!-- For setting the round duration -->
+          <!-- <div class="round-duration-option game-setup-option">
+            <div class="round-duration-config option-config">
+              <span class="option-label">Round duration</span>
+              <input type="text" placeholder="by minutes" />
+            </div>
+            <div class="error-message">
+              <span>Please enter the round duration</span>
+            </div>
+          </div> -->
+
+          <!-- For entering the name of the first player -->
+          <!-- <div class="player-name-option game-setup-option">
+            <div class="player-name-option option-config">
+              <span class="option-label">Name of first player</span>
+              <input type="text" />
+            </div>
+          </div> -->
+
+          <!-- For selecting the symbol of the first player -->
+          <!-- <div class="player-symbol-option game-setup-option">
+            <div class="player-symbol-config option-config">
+              <span class="option-label">Select the turn of first player</span>
+              <div class="dropdown-menu">
+                <div class="dropdown-title">
+                  <span>Select the type</span>
+                  <img src="images/arrow-down.svg" alt="arrow-down" />
+                </div>
+                <ul class="menu" style="display: none">
+                  <li>X</li>
+                  <li>O</li>
+                </ul>
+              </div>
+            </div>
+          </div> -->
+
+          <!-- For uploading the image of the first player -->
+          <!-- <div class="player-image-option game-setup-option">
+            <div class="player-image-config option-config">
+              <span class="option-label">Image of first player</span>
+              <div class="uploader">
+                <label for="file-upload">Upload image</label>
+                <input type="file" accept="image/*" id="file-upload" />
+              </div>
+            </div>
+          </div> -->
+
+          <!-- For entering the name of the second player -->
+          <!-- <div class="player-name-option game-setup-option">
+            <div class="player-name-config option-config">
+              <span class="option-label">Name of second player</span>
+              <input type="text" />
+            </div>
+          </div> -->
+
+          <!-- For selecting the symbol of the second player -->
+          <!-- <div class="player-symbol-option game-setup-option">
+            <div class="player-symbol-config option-config">
+              <span class="option-label">Select the turn of second player</span>
+              <div class="dropdown-menu">
+                <div class="dropdown-title">
+                  <span>Select the type</span>
+                  <img src="images/arrow-down.svg" alt="arrow-down" />
+                </div>
+                <ul class="menu" style="display: none">
+                  <li>X</li>
+                  <li>O</li>
+                </ul>
+              </div>
+            </div>
+          </div> -->
+
+          <!-- For uploading the image of the second player -->
+          <!-- <div class="player-image-option game-setup-option">
+            <div class="player-image-config option-config">
+              <span class="option-label">Image of second player</span>
+              <div class="uploader">
+                <label for="file-upload">Upload image</label>
+                <input type="file" accept="image/*" id="file-upload" />
+              </div>
+            </div>
+          </div> -->
+
+          <!-- Game Details -->
+          <!-- <div class="game-details">
+            <div class="players-section">
+              <div class="player">
+                <div class="face front">
+                  <img src="images/profile.png" alt="" />
+                  <svg
+                    version="1.1"
+                    id="Layer_1"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    x="0px"
+                    y="0px"
+                    viewBox="0 0 79.035 79.035"
+                    style="enable-background: new 0 0 79.035 79.035"
+                    xml:space="preserve"
+                  >
+                    <path
+                      d="M2,24.508c0-0.734,0.035-1.473,0.105-2.203
+	C2.18,21.57,2.289,20.84,2.43,20.117c0.145-0.723,0.324-1.438,0.539-2.141c0.215-0.707,0.461-1.398,0.742-2.082
+	c0.285-0.68,0.598-1.348,0.945-1.996c0.348-0.652,0.727-1.281,1.137-1.895s0.848-1.203,1.316-1.773S8.07,9.113,8.594,8.594
+	C9.113,8.07,9.66,7.578,10.23,7.109s1.16-0.906,1.773-1.316s1.242-0.789,1.895-1.137c0.648-0.348,1.316-0.66,1.996-0.945
+	c0.684-0.281,1.375-0.527,2.082-0.742c0.703-0.215,1.418-0.395,2.141-0.539c0.723-0.141,1.453-0.25,2.188-0.324
+	C23.035,2.035,23.773,2,24.508,2c1.723,0,3.438,0.035,5.148,0.105c1.715,0.074,3.414,0.184,5.102,0.324
+	c1.688,0.145,3.352,0.324,5,0.539c1.645,0.215,3.262,0.461,4.852,0.742c1.59,0.285,3.145,0.598,4.66,0.945s2.992,0.727,4.422,1.137
+	s2.809,0.848,4.141,1.316c1.328,0.469,2.602,0.961,3.82,1.484c1.215,0.52,2.367,1.066,3.461,1.637c1.09,0.57,2.113,1.16,3.07,1.773
+	c0.953,0.613,1.84,1.242,2.648,1.895c0.813,0.648,1.547,1.316,2.203,1.996c0.66,0.684,1.238,1.375,1.738,2.082
+	c0.5,0.703,0.918,1.418,1.254,2.141c0.332,0.723,0.586,1.453,0.754,2.188c0.168,0.73,0.254,1.469,0.254,2.203
+	c0,1.723-0.086,3.438-0.254,5.148c-0.168,1.715-0.422,3.414-0.754,5.102c-0.336,1.688-0.754,3.352-1.254,5
+	c-0.5,1.645-1.078,3.262-1.738,4.852c-0.656,1.59-1.391,3.145-2.203,4.66c-0.809,1.516-1.695,2.992-2.648,4.422
+	c-0.957,1.43-1.98,2.809-3.07,4.141c-1.094,1.328-2.246,2.602-3.461,3.82c-1.219,1.215-2.492,2.367-3.82,3.461
+	c-1.332,1.09-2.711,2.113-4.141,3.07c-1.43,0.953-2.906,1.84-4.422,2.648c-1.516,0.813-3.07,1.547-4.66,2.203
+	c-1.59,0.66-3.207,1.238-4.852,1.738c-1.648,0.5-3.313,0.918-5,1.254c-1.688,0.332-3.387,0.586-5.102,0.754
+	c-1.711,0.168-3.426,0.254-5.148,0.254c-0.734,0-1.473-0.086-2.203-0.254c-0.734-0.168-1.465-0.422-2.188-0.754
+	c-0.723-0.336-1.438-0.754-2.141-1.254c-0.707-0.5-1.398-1.078-2.082-1.738c-0.68-0.656-1.348-1.391-1.996-2.203
+	c-0.652-0.809-1.281-1.695-1.895-2.648c-0.613-0.957-1.203-1.98-1.773-3.07c-0.57-1.094-1.117-2.246-1.637-3.461
+	c-0.523-1.219-1.016-2.492-1.484-3.82c-0.469-1.332-0.906-2.711-1.316-4.141s-0.789-2.906-1.137-4.422s-0.66-3.07-0.945-4.66
+	c-0.281-1.59-0.527-3.207-0.742-4.852c-0.215-1.648-0.395-3.313-0.539-5c-0.141-1.688-0.25-3.387-0.324-5.102
+	C2.035,27.945,2,26.23,2,24.508z"
+                    />
+                  </svg>
+                </div>
+                <div class="face back">
+                  <p><span>Mohammed Yousef</span></p>
+                  <p><span>X</span></p>
+                </div>
+                <div class="bg">
+                  <img src="images/bg-red-new.svg" alt="" />
+                </div>
+              </div>
+              <div class="vs">
+                <img src="images/vs.svg" alt="" />
+              </div>
+              <div class="player">
+                <div class="face front">
+                  <img src="images/mohammed.jpg" alt="" />
+                  <svg
+                    version="1.1"
+                    id="Layer_1"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    x="0px"
+                    y="0px"
+                    viewBox="0 0 79.035 79.035"
+                    style="enable-background: new 0 0 79.035 79.035"
+                    xml:space="preserve"
+                  >
+                    <path
+                      d="M2,24.508c0-0.734,0.035-1.473,0.105-2.203
+	C2.18,21.57,2.289,20.84,2.43,20.117c0.145-0.723,0.324-1.438,0.539-2.141c0.215-0.707,0.461-1.398,0.742-2.082
+	c0.285-0.68,0.598-1.348,0.945-1.996c0.348-0.652,0.727-1.281,1.137-1.895s0.848-1.203,1.316-1.773S8.07,9.113,8.594,8.594
+	C9.113,8.07,9.66,7.578,10.23,7.109s1.16-0.906,1.773-1.316s1.242-0.789,1.895-1.137c0.648-0.348,1.316-0.66,1.996-0.945
+	c0.684-0.281,1.375-0.527,2.082-0.742c0.703-0.215,1.418-0.395,2.141-0.539c0.723-0.141,1.453-0.25,2.188-0.324
+	C23.035,2.035,23.773,2,24.508,2c1.723,0,3.438,0.035,5.148,0.105c1.715,0.074,3.414,0.184,5.102,0.324
+	c1.688,0.145,3.352,0.324,5,0.539c1.645,0.215,3.262,0.461,4.852,0.742c1.59,0.285,3.145,0.598,4.66,0.945s2.992,0.727,4.422,1.137
+	s2.809,0.848,4.141,1.316c1.328,0.469,2.602,0.961,3.82,1.484c1.215,0.52,2.367,1.066,3.461,1.637c1.09,0.57,2.113,1.16,3.07,1.773
+	c0.953,0.613,1.84,1.242,2.648,1.895c0.813,0.648,1.547,1.316,2.203,1.996c0.66,0.684,1.238,1.375,1.738,2.082
+	c0.5,0.703,0.918,1.418,1.254,2.141c0.332,0.723,0.586,1.453,0.754,2.188c0.168,0.73,0.254,1.469,0.254,2.203
+	c0,1.723-0.086,3.438-0.254,5.148c-0.168,1.715-0.422,3.414-0.754,5.102c-0.336,1.688-0.754,3.352-1.254,5
+	c-0.5,1.645-1.078,3.262-1.738,4.852c-0.656,1.59-1.391,3.145-2.203,4.66c-0.809,1.516-1.695,2.992-2.648,4.422
+	c-0.957,1.43-1.98,2.809-3.07,4.141c-1.094,1.328-2.246,2.602-3.461,3.82c-1.219,1.215-2.492,2.367-3.82,3.461
+	c-1.332,1.09-2.711,2.113-4.141,3.07c-1.43,0.953-2.906,1.84-4.422,2.648c-1.516,0.813-3.07,1.547-4.66,2.203
+	c-1.59,0.66-3.207,1.238-4.852,1.738c-1.648,0.5-3.313,0.918-5,1.254c-1.688,0.332-3.387,0.586-5.102,0.754
+	c-1.711,0.168-3.426,0.254-5.148,0.254c-0.734,0-1.473-0.086-2.203-0.254c-0.734-0.168-1.465-0.422-2.188-0.754
+	c-0.723-0.336-1.438-0.754-2.141-1.254c-0.707-0.5-1.398-1.078-2.082-1.738c-0.68-0.656-1.348-1.391-1.996-2.203
+	c-0.652-0.809-1.281-1.695-1.895-2.648c-0.613-0.957-1.203-1.98-1.773-3.07c-0.57-1.094-1.117-2.246-1.637-3.461
+	c-0.523-1.219-1.016-2.492-1.484-3.82c-0.469-1.332-0.906-2.711-1.316-4.141s-0.789-2.906-1.137-4.422s-0.66-3.07-0.945-4.66
+	c-0.281-1.59-0.527-3.207-0.742-4.852c-0.215-1.648-0.395-3.313-0.539-5c-0.141-1.688-0.25-3.387-0.324-5.102
+	C2.035,27.945,2,26.23,2,24.508z"
+                    />
+                  </svg>
+                </div>
+                <div class="face back">
+                  <p><span>Mohammed Yousef</span></p>
+                  <p><span>O</span></p>
+                </div>
+                <div class="bg">
+                  <img src="images/bg-blue-new.svg" alt="" />
+                </div>
+              </div>
+            </div>
+          </div> -->
+        </section>
+        <footer>
+          <a class="btn">Previous</a>
+          <a class="btn">Next</a>
+        </footer>
+      </div>
+
+      <!--  -->
+      <div class="window game-board" style="display: no ne">
+        <header>
+          <div class="player">
+            <div class="img">
+              <img src="images/profile.png" alt="" />
+            </div>
+            <div class="content">
+              <p>
+                <span class="name">Mohammed Yousef</span>
+                (<span class="symbol">X</span>)
+              </p>
+              <div class="progress-steps">
+                <div class="progress-bar"></div>
+              </div>
+            </div>
+          </div>
+          <div class="time">
+            <span>00:00</span>
+          </div>
+          <div class="player">
+            <div class="img">
+              <img src="images/abu-abel.jpeg" alt="" />
+            </div>
+            <div class="content">
+              <p>
+                <span class="name">Mohammed Yousef</span>
+                (<span class="symbol">O</span>)
+              </p>
+              <div class="progress-steps">
+                <div class="progress-bar"></div>
+              </div>
+            </div>
+          </div>
+        </header>
+        <section class="body">
+          <div class="trun-now notice">
+            <span>turn now for <span>Mohammed Yousef</span> </span>
+          </div>
+          <div class="borad">
+            <div>X</div>
+            <div>O</div>
+            <div>X</div>
+            <div>O</div>
+            <div>X</div>
+            <div>X</div>
+            <div>O</div>
+            <div>O</div>
+            <div>O</div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </body>
+</html>

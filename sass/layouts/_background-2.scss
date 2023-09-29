@@ -1,0 +1,72 @@
+$lines: ();
+$lines-offset: ();
+$num: 20;
+
+@function rand($min, $max: null) {
+  @return if($max, random($max - $min + 1) + $min - 1, random($min));
+}
+
+@for $i from 0 through $num {
+  $start-x: rand(0, 100) * 1vw;
+  $start-y: rand(0, 100) * 1vh;
+
+  $end-x: calc(#{$start-x} + #{rand(-5, 5) * 5px});
+  $end-y: calc(#{$start-y} + #{rand(-5, 5) * 5px});
+
+  $lines: append(
+    $lines,
+    linear-gradient(rand(0, 180) * 1deg, blue, transparent, red 33%)
+      $start-x
+      $start-y,
+    comma
+  );
+
+  $lines-offset: append($lines-offset, $end-x $end-y, comma);
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  color: $light-color;
+  overflow: hidden;
+}
+
+.background {
+  animation: offset 10s alternate infinite linear;
+  background: $lines;
+  background-blend-mode: difference; //try color-burn
+  filter: brightness(450%);
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+
+  &::before {
+    $offset: 1px;
+
+    background: inherit;
+    background-blend-mode: inherit;
+    mix-blend-mode: difference;
+    filter: brightness(96%);
+
+    content: "";
+    display: block;
+    position: inherit;
+    top: $offset;
+    left: $offset;
+    bottom: $offset;
+    right: $offset;
+  }
+}
+
+@keyframes offset {
+  100% {
+    background-position: $lines-offset;
+  }
+}

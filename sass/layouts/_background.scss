@@ -1,0 +1,69 @@
+/*
+$mint-green: #98d8aa;
+$coral-red: #ff6d60;
+$sunflower-yellow: #f7d060;
+$coral-red: #f3e99f;
+$white: #fff;
+*/
+
+.background-animation {
+  & .light {
+    $bg: mix(#fff, $sunflower-yellow, 30%);
+    @include circle-effect(500px, 500px, $bg, 150px, 1);
+
+    &:first-child {
+      left: -290px;
+      top: -150px;
+    }
+
+    &:nth-child(2) {
+      right: -290px;
+      bottom: -150px;
+    }
+  }
+
+  & .ball {
+    $bg: linear-gradient(90deg, #fea989 0.02%, #f8612a 98.92%);
+    @include circle-effect(20px, 20px, $bg, 1px, 0.6);
+    // box-shadow: 0px 1px 4px 0px #8084dc;
+
+    &:nth-child(3) {
+      top: 80%;
+      animation: up-down 2s infinite;
+      animation-fill-mode: both;
+      animation-direction: alternate;
+    }
+
+    &:nth-child(4) {
+      top: 60%;
+      left: 50px;
+      animation: rotate 4s linear 2s infinite forwards;
+    }
+
+    &:nth-child(5) {
+      // box-shadow: 1px 1px 1px 1px #fff7f7;
+      top: 32%;
+      right: 28%;
+      animation: rotate 4s linear 2s infinite forwards;
+    }
+  }
+}
+
+@keyframes up-down {
+  0% {
+    transform: translateY(8px);
+  }
+
+  100% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg) translate(-5px) rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg) translate(-5px) rotate(-360deg);
+  }
+}

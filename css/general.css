@@ -1,0 +1,709 @@
+/*
+* the differace between nth-child and type and why happen this 
+ */
+@import url("https://fonts.googleapis.com/css2?family=Finger+Paint&display=swap");
+
+:root {
+  --main-color: #006eff;
+  --secondary-color: #009bff;
+  --light-color: #ffffff;
+  --dark-color: #050823;
+  --secondary-dark-color: #080c2f;
+  /*
+    yellow: #F9F871
+    green: #97F58A
+    yellowbtwgreen: #97F58A
+    blue: #00BCFF
+  */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+input {
+  outline: none;
+  border: none;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+/* cross */
+.cross {
+  position: relative;
+}
+
+.cross span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 7px;
+  background: linear-gradient(90deg, #fea989 0.02%, #f8612a 98.92%);
+}
+.cross span:first-child {
+  transform: rotate(45deg);
+}
+
+.cross span:last-child {
+  transform: rotate(-45deg);
+}
+
+/* button */
+.btn {
+  display: inline-block;
+  /* padding: 10px 60px; */
+  border: none;
+  position: relative;
+  outline: 2px solid var(--secondary-color);
+  color: var(--light-color);
+  background-color: transparent;
+  border-radius: 5px;
+
+  font-family: inherit;
+  transition: all 0.6s;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.btn:hover {
+  color: #ffffff;
+  transform: scale(1.1);
+  outline: none;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  left: -50px;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background-color: var(--secondary-color);
+  transform: skewX(45deg);
+  z-index: -1;
+  transition: width 0.7s;
+}
+
+.btn:hover::before {
+  width: 250%;
+}
+
+/* drop menu */
+.drop-menu {
+  position: relative;
+}
+
+.drop-menu .title,
+.uploader label,
+input {
+  width: 200px;
+  padding: 10px 20px;
+  border-radius: 6px 6px;
+  font-size: 15px;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+  text-align: center;
+}
+
+.drop-menu .title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+  color: var(--light-color);
+  cursor: pointer;
+  background-color: var(--main-color);
+}
+
+.drop-menu .title span {
+  display: inline-block;
+}
+
+.drop-menu .title img {
+  display: inline-block;
+  width: 15px;
+}
+
+.drop-menu .menu {
+  position: absolute;
+  width: 100%;
+  transition: 0.3s;
+  z-index: 1;
+}
+
+.drop-menu .menu li {
+  padding: 10px 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  letter-spacing: 1.5px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.drop-menu .menu li:hover {
+  opacity: 0.6;
+  color: var(--dark-color);
+}
+
+.drop-menu .menu li:not(:last-child) {
+  border-bottom: solid 2px rgba(255, 255, 255, 0.5);
+}
+
+.drop-menu .menu :last-child {
+  border-radius: 0 0 6px 6px;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.app {
+  /* body */
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-color: var(--dark-color);
+  color: var(--light-color);
+  overflow: clip;
+}
+
+/* =======================  Effect behind the Background ======================= */
+.background-effect {
+  /* height: 100vh; */
+  /* overflow: clip; */
+}
+.background-effect .light {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background-color: var(--main-color);
+  filter: blur(150px);
+  border-radius: 50%;
+}
+
+.background-effect .light:first-child {
+  left: -290px;
+  top: -150px;
+}
+
+.background-effect .light:nth-child(2) {
+  right: -290px;
+  bottom: -150px;
+}
+
+.background-effect .ball {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(
+    135.15deg,
+    #ae80dc 1.17%,
+    #dc83c3 31.88%,
+    #8084dc 65.46%
+  );
+  filter: blur(1px);
+  opacity: 0.6;
+  box-shadow: 0px 1px 4px 0px #8084dc;
+}
+
+.background-effect .ball:nth-child(3) {
+  top: 80%;
+  animation: up-down 2s infinite;
+  animation-fill-mode: both;
+  animation-direction: alternate;
+}
+
+.background-effect .ball:nth-child(4) {
+  top: 60%;
+  left: 50px;
+  animation: rotate 4s linear 2s infinite forwards;
+}
+
+.background-effect .ball:nth-child(5) {
+  width: 25px;
+  height: 25px;
+  top: 32%;
+  right: 28%;
+  background: linear-gradient(90deg, #fea989 0.02%, #f8612a 98.92%);
+  filter: blur(3px);
+  box-shadow: 1px 1px 1px 1px #fff7f7;
+  animation: rotate 4s linear 2s infinite forwards;
+}
+
+@keyframes up-down {
+  0% {
+    transform: translateY(8px);
+  }
+
+  100% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg) translate(-5px) rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg) translate(-5px) rotate(-360deg);
+  }
+}
+
+.background-effect .cross {
+  position: absolute;
+  left: 800px;
+  bottom: 100px;
+  animation: up-down 2s infinite;
+  animation-fill-mode: both;
+  animation-direction: alternate;
+}
+
+.background-effect .cross span {
+  filter: blur(3px);
+}
+
+.background-effect .circle {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: solid 7px #ae80dc;
+  filter: blur(2px);
+  top: 50px;
+  animation: rotate 4s linear 2s infinite both;
+}
+
+/* =======================  Start App Screen ======================= */
+.start-app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+
+.start-app .bouncing-text {
+  position: relative;
+  display: flex;
+  gap: 20px;
+  font-size: 70px;
+  font-weight: 900;
+  /* font-family: "Finger Paint", cursive; */
+}
+
+.start-app .bouncing-text .letter {
+  position: relative;
+  color: cornsilk;
+  text-shadow: 0 3px #4361ee, 0 5px #4361ee, 0 7px #4361ee; /* dont't write the var color, because it change the var color, I don't like to change this color*/
+  animation: bounce 1s ease infinite;
+  -webkit-animation: bounce 2s ease infinite;
+}
+
+.start-app .bouncing-text .letter-shadow:nth-child(2) .letter {
+  animation-delay: 0.1s;
+}
+
+.start-app .bouncing-text .letter-shadow:nth-child(3) .letter {
+  animation-delay: 0.2s;
+}
+
+.start-app .bouncing-text .letter-shadow:nth-child(4) .letter {
+  animation-delay: 0.3s;
+}
+
+.start-app .bouncing-text .letter-shadow:nth-child(5) .letter {
+  animation-delay: 0.4s;
+}
+
+.start-app .bouncing-text .letter-shadow:nth-child(6) .letter {
+  animation-delay: 0.5s;
+}
+
+@keyframes bounce {
+  0% {
+    transform: scale(1, 1) translateY(0);
+  }
+  10% {
+    transform: scale(1.1, 0.9) translateY(0);
+  }
+  30% {
+    transform: scale(0.9, 1.1) translateY(-55px);
+  }
+  50% {
+    transform: scale(1.05, 0.95) translateY(0);
+  }
+  58% {
+    transform: scale(1, 1) translateY(-7px);
+  }
+  65% {
+    transform: scale(1, 1) translateY(0);
+  }
+  100% {
+    transform: scale(1, 1) translateY(0);
+  }
+}
+
+@-webkit-keyframes bounce {
+  0% {
+    transform: scale(1, 1) translateY(0);
+  }
+  10% {
+    transform: scale(1.1, 0.9) translateY(0);
+  }
+  30% {
+    transform: scale(0.9, 1.1) translateY(-55px);
+  }
+  50% {
+    transform: scale(1.05, 0.95) translateY(0);
+  }
+  58% {
+    transform: scale(1, 1) translateY(-7px);
+  }
+  65% {
+    transform: scale(1, 1) translateY(0);
+  }
+  100% {
+    transform: scale(1, 1) translateY(0);
+  }
+}
+
+.start-app .bouncing-text .letter-shadow {
+  position: relative;
+}
+
+/* shadow of letters */
+.start-app .bouncing-text .letter-shadow .shadow {
+  display: inline-block;
+  width: 50px;
+  height: 5px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.4);
+  animation: scale 1s linear infinite 0.2s;
+  -webkit-animation: scale 2s linear infinite 0.2s;
+}
+
+@keyframes scale {
+  0% {
+    transform: scaleX(1);
+  }
+  25% {
+    transform: scaleX(0.4);
+  }
+  50% {
+    transform: scaleX(1);
+  }
+  75% {
+    transform: scaleX(0.9);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+@-webkit-keyframes scale {
+  0% {
+    transform: scaleX(1);
+  }
+  25% {
+    transform: scaleX(0.4);
+  }
+  50% {
+    transform: scaleX(1);
+  }
+  75% {
+    transform: scaleX(0.9);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+.start-app .play-btn {
+  padding: 10px 60px;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+/* =======================  Settings App Screen ======================= */
+/* --- general --- */
+
+.settings {
+  width: 45%;
+  width: 900px;
+  min-height: 80vh;
+  /* padding: 20px; */
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 15px;
+  /* background-color: #dc83c3; */
+  /* overflow: auto; */
+}
+
+.settings .header {
+  background-color: var(--secondary-dark-color);
+  background-color: var(--main-color);
+  background: linear-gradient(
+    90deg,
+    var(--dark-color),
+    var(--main-color),
+    var(--secondary-color),
+    var(--dark-color)
+  );
+
+  padding: 20px;
+  border-radius: 15px 15px 0 0;
+  border-bottom: solid 2px rgba(255, 255, 255, 0.4);
+}
+
+.settings .header h2 {
+  text-align: center;
+  letter-spacing: 2px;
+  font-size: 30px;
+}
+
+.settings .body {
+  max-height: calc(100% - 88px - 60px);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  gap: 20px;
+  overflow: auto;
+}
+
+.settings .body .progress-container {
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.settings .body .progress-container::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 4px;
+  background-color: #e0e0e0;
+  transform: translateY(-50%);
+}
+
+.settings .body .progress-container .progress {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 4px;
+  background-color: #3498db;
+  transform: translateY(-50%);
+  transition: 0.4s ease;
+}
+
+.settings .body .progress-container .circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  color: #333;
+  z-index: 1;
+  border: 2px solid #eee;
+  transition: 0.4s ease;
+}
+
+.settings .body .progress-container .circle.acitve {
+  border: 2px solid #3498db;
+}
+
+.settings .body .container {
+  width: 100%;
+  position: relative;
+}
+
+.settings .container::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.settings .condtion {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 10px;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 6px;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.settings .condtion .label {
+  font-size: 17px;
+  color: #4361ee;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.settings .error-message {
+  width: fit-content;
+  color: #fff;
+  margin-bottom: 10px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  /* background-color: #d32f2f; */
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #d32f2f;
+  color: red;
+  padding: 2px;
+  border-radius: 4px;
+  /* text-align: center; */
+}
+
+.settings footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 20px;
+}
+
+.settings footer .btn {
+  background-color: var(--dark-color);
+  padding: 5px 10px;
+  font-size: 15px;
+}
+
+.uploader label {
+  display: block;
+  background-color: var(--main-color);
+  cursor: pointer;
+}
+
+.details {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 50px 50px 0 50px;
+}
+
+.details .players {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+  /* gap: 100px; */
+}
+
+.details .players .cross {
+  width: 100px;
+}
+
+.details .players .cross span {
+  width: 56px;
+  height: 7px;
+  border-radius: 50%;
+  background: #d32f2f;
+}
+
+.details .players .player {
+  /* width: 290px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  position: relative;
+  background-color: #080c2f;
+  padding: 40px 20px 20px 20px;
+  border-radius: 10px;
+}
+
+.details .players .player h3 {
+  width: 190px;
+  height: 25px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.details .players .player img {
+  position: absolute;
+  width: 30%;
+  border-radius: 50%;
+  top: calc((68.41px / 2) * -1);
+  border: 5px solid rgba(255, 255, 255, 0.5);
+}
+
+.details .players::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  left: 0;
+  bottom: -20px;
+  background-color: rgb(255 255 255 / 0.1);
+}
+
+.details .content {
+  color: var(--dark-color);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+.details .content p {
+  padding: 2px 20px;
+  background-color: rgba(255, 255, 255, 0.5);
+  background-color: var(--dark-color);
+  border-radius: 6px;
+  letter-spacing: 2px;
+}
+
+/* ------------- */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(16 18 27 / 40%);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #f9fafb;
+}
